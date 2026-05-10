@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biển Báo Giao Thông Việt Nam</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23C62828'/><rect x='20' y='43' width='60' height='14' rx='7' fill='white'/></svg>" />
+  
+  <style>
+    /* TOÀN BỘ CSS ĐÃ ĐƯỢC GỘP VÀO ĐÂY */
+    @import url('[https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap)');
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--red:#C62828;--red-light:#FFEBEE;--yellow:#F57F17;--yellow-light:#FFFDE7;--blue:#0D47A1;--blue-light:#E3F2FD;--green:#1B5E20;--green-light:#E8F5E9;--purple:#4A148C;--purple-light:#F3E5F5;--bg:#F4F6F9;--bg-alt:#ECEEF2;--surface:#FFFFFF;--border:rgba(0,0,0,0.08);--text:#0F1923;--text-2:#374151;--text-muted:#6B7280;--text-faint:#9CA3AF;--shadow-sm:0 1px 4px rgba(0,0,0,0.07);--shadow-md:0 6px 24px rgba(0,0,0,0.12);--shadow-xl:0 20px 60px rgba(0,0,0,0.20);--r-xs:6px;--r-sm:10px;--r:16px;--r-lg:22px;--r-full:9999px;--t:0.22s;--max-w:1120px;--header-h:68px}
+    body{font-family:'Be Vietnam Pro',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
+    img{display:block;max-width:100%} button{font-family:inherit;cursor:pointer;border:none;background:none}
+    ::-webkit-scrollbar{width:6px} ::-webkit-scrollbar-thumb{background:var(--border);border-radius:var(--r-full)}
+    .header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:var(--header-h);display:flex;align-items:center;padding:0 clamp(16px,4vw,32px);gap:16px}
+    .header-logo{display:flex;align-items:center;gap:12px;cursor:pointer} .logo-emblem{width:40px;height:40px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center} .logo-emblem svg{width:22px;height:22px}
+    .logo-title{font-family:'Lexend',sans-serif;font-size:15px;font-weight:800} .logo-title span{color:var(--red)} .logo-sub{font-size:11px;color:var(--text-muted)}
+    .header-search{flex:1;max-width:400px;position:relative;margin:0 auto} .header-search input{width:100%;padding:9px 16px 9px 40px;border:1.5px solid var(--border);border-radius:var(--r-full);outline:none;background:var(--bg)} .header-search input:focus{background:var(--surface);border-color:var(--blue)} .search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-muted)} .search-icon svg{width:16px;height:16px}
+    .header-breadcrumb{margin-left:auto;font-size:12px;color:var(--text-muted)} .bc-home{cursor:pointer;color:var(--blue);font-weight:600} .bc-current{color:var(--text-2);font-weight:600}
+    .hero{background:linear-gradient(150deg,#0a1628 0%,#162744 40%,#0d2137 100%);padding:clamp(36px,6vw,68px) 16px;text-align:center;color:#fff} .hero h1{font-family:'Lexend',sans-serif;font-size:clamp(26px,5.5vw,46px);font-weight:900;margin-bottom:14px} .hero h1 em{font-style:normal;color:#FFD54F} .hero-desc{font-size:14px;color:rgba(255,255,255,0.7);max-width:480px;margin:0 auto 24px} .hero-stats{display:flex;justify-content:center;gap:32px} .hero-stat-num{font-family:'Lexend',sans-serif;font-size:32px;font-weight:900} .hero-stat-label{font-size:11px;opacity:0.5}
+    .main-content{max-width:var(--max-w);margin:0 auto;padding:32px 16px 80px} .view{display:none} .view.active{display:block}
+    .section-header{display:flex;align-items:center;margin-bottom:20px;gap:10px} .section-title{font-family:'Lexend',sans-serif;font-size:18px;font-weight:700} .count-chip{background:var(--bg-alt);padding:3px 11px;border-radius:var(--r-full);font-size:11px;font-weight:700;color:var(--text-muted)}
+    .category-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+    .category-card{background:var(--surface);border-radius:var(--r-lg);cursor:pointer;transition:transform 0.2s;text-align:center;border:1px solid transparent;box-shadow:var(--shadow-sm)} .category-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--cat-color)} .card-top{padding:24px 16px;display:flex;flex-direction:column;align-items:center;gap:12px} .card-icon-ring{width:64px;height:64px;background:var(--cat-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--cat-color)} .card-name{font-family:'Lexend',sans-serif;font-weight:700} .card-desc{font-size:11.5px;color:var(--text-muted)} .card-bottom{padding:12px;background:var(--cat-light);font-size:11px;font-weight:700;color:var(--cat-color)}
+    .cat-header-card{background:var(--surface);border-radius:var(--r-lg);padding:20px;display:flex;gap:16px;margin-bottom:24px;border:1px solid var(--border)} .cat-header-icon{width:56px;height:56px;background:var(--cat-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:var(--cat-color)} .cat-header-code{font-size:10px;font-weight:800;text-transform:uppercase;color:var(--cat-color)} .cat-header-name{font-family:'Lexend',sans-serif;font-size:20px;font-weight:800;color:var(--cat-color)}
+    .filter-bar{display:flex;gap:8px;margin-bottom:20px} .filter-search{flex:1} .filter-search input{width:100%;padding:9px 14px;border-radius:var(--r-full);border:1.5px solid var(--border);outline:none} .sort-toggle{display:flex;background:var(--surface);border-radius:var(--r-full);border:1px solid var(--border);overflow:hidden} .sort-btn{padding:8px 14px;font-size:12px;font-weight:600;color:var(--text-muted)} .sort-btn.active{background:var(--cat-color,var(--blue));color:#fff}
+    .signs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:12px}
+    .sign-card{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);cursor:pointer;transition:transform 0.2s} .sign-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--cat-color)} .sign-img-wrap{height:120px;background:var(--cat-light);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden} .sign-img-wrap img{width:75px;height:75px;object-fit:contain;z-index:2;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15))} .img-fallback{position:absolute;inset:0;font-size:36px;font-weight:800;color:var(--cat-color);opacity:0.15;display:none;align-items:center;justify-content:center;z-index:1} .sign-body{padding:12px;border-top:1px solid var(--border)} .sign-code-badge{display:inline-block;background:var(--cat-light);padding:2px 6px;border-radius:4px;font-size:10px;font-weight:800;color:var(--cat-color);margin-bottom:4px} .sign-name{font-family:'Lexend',sans-serif;font-size:12.5px;font-weight:700} .sign-snippet{font-size:11px;color:var(--text-muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(4px)} .modal-overlay.open{display:flex} .modal{background:var(--surface);border-radius:var(--r-xl);width:100%;max-width:500px;overflow:hidden;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-xl)} .modal-top{padding:24px;text-align:center;position:relative} .modal-close-x{position:absolute;top:16px;right:16px;width:32px;height:32px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff} .modal-sign-img{width:110px;height:110px;margin:0 auto 12px;display:block;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.2))} .modal-code-pill{display:inline-block;padding:4px 12px;border-radius:var(--r-full);font-size:11px;font-weight:800;background:rgba(255,255,255,0.8)} .modal-body{padding:24px} .modal-sign-name{font-family:'Lexend',sans-serif;font-size:20px;font-weight:800;margin-bottom:6px} .modal-meaning-box{background:var(--bg);padding:14px;border-radius:var(--r-sm);font-size:13.5px;border-left:3px solid var(--cat-color)} .modal-footer{padding:16px 24px;display:flex;gap:10px} .modal-close-main{flex:1;padding:12px;background:var(--cat-color);color:#fff;border-radius:var(--r);font-weight:700}
+    .back-btn{display:inline-block;padding:8px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-full);font-size:13px;font-weight:600;margin-bottom:20px;cursor:pointer} .view-more-wrap{text-align:center;margin-top:24px} .view-more-btn{padding:10px 24px;border:1px solid var(--border);border-radius:var(--r-full);font-weight:700;background:var(--surface);cursor:pointer}
+    .search-empty{text-align:center;padding:40px 20px} .search-result-group{margin-bottom:24px} .search-group-label{font-size:13px;font-weight:700;margin-bottom:12px;color:var(--text-muted)}
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-logo" onclick="goHome()">
+      <div class="logo-emblem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+      </div>
+      <div class="logo-text-wrap">
+        <div class="logo-title">Biển Báo <span>VN</span></div>
+        <div class="logo-sub">Tra cứu giao thông đường bộ</div>
+      </div>
+    </div>
+    <div class="header-search">
+      <span class="search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+      <input id="header-search-input" type="search" placeholder="Tìm biển báo... (Ctrl+K)" autocomplete="off" spellcheck="false" />
+    </div>
+    <div class="header-breadcrumb" id="header-breadcrumb"><span>Trang chủ</span></div>
+  </header>
+
+  <section class="hero" id="hero-section">
+    <div class="hero-inner">
+      <h1>Tra Cứu <em>Biển Báo</em> Giao Thông</h1>
+      <p class="hero-desc">Hệ thống tra cứu đầy đủ theo <strong>QCVN 41:2019/BGTVT</strong> — Cục CSGT áp dụng toàn quốc.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num" id="stat-total">300<span>+</span></div><div class="hero-stat-label">Biển báo</div></div>
+        <div class="hero-stat"><div class="hero-stat-num" id="stat-cats">5</div><div class="hero-stat-label">Nhóm biển</div></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="main-content">
+    
+    <div class="view active" id="view-home">
+      <div class="section-header"><h2 class="section-title">Chọn nhóm biển báo</h2></div>
+      <div class="category-grid" id="category-grid"></div>
+    </div>
+
+    <div class="view" id="view-list">
+      <button class="back-btn" id="back-btn">Quay lại trang chủ</button>
+      <div class="cat-header-card" id="cat-header-card"></div>
+      
+      <div class="filter-bar">
+        <div class="filter-search">
+          <input id="list-search-input" type="search" placeholder="Lọc theo tên hoặc mã biển báo..." />
+        </div>
+        <div class="sort-toggle">
+          <button class="sort-btn active" id="sort-code">Mã biển</button>
+          <button class="sort-btn" id="sort-name">Tên biển</button>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="section-header-left"><h2 class="section-title">Danh sách biển báo</h2><span class="count-chip" id="signs-count">—</span></div>
+      </div>
+      
+      <div class="signs-grid" id="signs-grid"></div>
+      <div class="view-more-wrap" id="view-more-wrap" style="display:none"><button class="view-more-btn" id="view-more-btn">Xem thêm</button></div>
+    </div>
+
+    <div class="view" id="view-search">
+      <div class="section-header"><h2 class="section-title">Kết quả tìm kiếm</h2><span class="count-chip" id="search-result-count">—</span></div>
+      <div id="search-empty" class="search-empty" style="display:none"><h3>Không tìm thấy kết quả</h3><p>Hãy thử tìm theo tên hoặc mã biển (vd: P.102)</p></div>
+      <div id="search-grid"></div>
+    </div>
+
+  </main>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-top" id="modal-top"></div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-footer"><button class="modal-close-main" onclick="closeModal()">Đóng lại</button></div>
+    </div>
+  </div>
+
+  <script>
+    // TOÀN BỘ DATA & LOGIC TÍCH HỢP
+    const embeddedData = {
+      categories: [
+        {
+          id: "bien-cam", name: "Biển báo cấm", code: "P", color: "#C62828", lightColor: "#FFEBEE", description: "Biểu thị các điều cấm mà người tham gia giao thông không được vi phạm.",
+          signs: [
+            { code: "P.101", name: "Đường cấm", meaning: "Đường cấm tất cả các loại phương tiện đi lại cả hai hướng, trừ xe ưu tiên." },
+            { code: "P.102", name: "Cấm đi ngược chiều", meaning: "Cấm tất cả các loại xe đi vào theo chiều đặt biển, trừ xe ưu tiên." },
+            { code: "P.103a", name: "Cấm xe ô tô", meaning: "Cấm tất cả các loại xe cơ giới kể cả xe máy 3 bánh có thùng đi qua, trừ mô tô 2 bánh, xe gắn máy và xe ưu tiên." },
+            { code: "P.103b", name: "Cấm xe ô tô rẽ phải", meaning: "Cấm các loại xe cơ giới (kể cả xe máy 3 bánh có thùng) rẽ phải." },
+            { code: "P.103c", name: "Cấm xe ô tô rẽ trái", meaning: "Cấm các loại xe cơ giới (kể cả xe máy 3 bánh có thùng) rẽ trái." },
+            { code: "P.104", name: "Cấm mô tô", meaning: "Cấm tất cả các loại xe mô tô đi qua, trừ xe mô tô được ưu tiên." },
+            { code: "P.105", name: "Cấm xe ô tô và mô tô", meaning: "Cấm xe cơ giới và xe mô tô đi qua, trừ xe ưu tiên." },
+            { code: "P.106a", name: "Cấm xe tải", meaning: "Cấm các loại xe ô tô tải đi qua." },
+            { code: "P.106b", name: "Cấm xe tải có khối lượng chuyên chở lớn", meaning: "Cấm xe ô tô tải có khối lượng chuyên chở (theo Giấy chứng nhận kiểm định) lớn hơn giá trị chữ số ghi trên biển." },
+            { code: "P.106c", name: "Cấm xe chở hàng nguy hiểm", meaning: "Cấm các xe chở hàng nguy hiểm đi qua." },
+            { code: "P.107", name: "Cấm xe ôtô khách và xe ô tô tải", meaning: "Cấm xe ô tô chở khách và các loại xe ô tô tải đi qua." },
+            { code: "P.107a", name: "Cấm xe ôtô khách", meaning: "Cấm các loại xe ô tô chở khách đi qua (trừ xe buýt)." },
+            { code: "P.107b", name: "Cấm xe ôtô taxi", meaning: "Cấm xe ô tô taxi đi qua." },
+            { code: "P.108", name: "Cấm xe kéo rơ-moóc", meaning: "Cấm các loại xe cơ giới kéo theo rơ-moóc, bao gồm cả máy kéo, xe ô tô khách kéo theo rơ-moóc." },
+            { code: "P.108a", name: "Cấm xe sơ-mi rơ-moóc", meaning: "Cấm các loại xe ô tô đầu kéo kéo sơ-mi rơ-moóc." },
+            { code: "P.109", name: "Cấm máy kéo", meaning: "Cấm tất cả các loại máy kéo, kể cả máy kéo kéo theo rơ-moóc." },
+            { code: "P.110a", name: "Cấm xe đạp", meaning: "Cấm xe đạp đi qua. Xe đạp thồ được phép đi." },
+            { code: "P.110b", name: "Cấm xe đạp thồ", meaning: "Cấm xe đạp thồ đi qua. Xe đạp không thồ được phép đi." },
+            { code: "P.111a", name: "Cấm xe gắn máy", meaning: "Cấm xe gắn máy đi qua. Xe mô tô vẫn được phép đi." },
+            { code: "P.111b", name: "Cấm xe ba bánh loại có động cơ (xe lam)", meaning: "Cấm xe ba bánh loại có động cơ (xe lam)." },
+            { code: "P.111c", name: "Cấm xe ba bánh loại có động cơ (xe lôi máy)", meaning: "Cấm xe ba bánh loại có động cơ (xe lôi máy)." },
+            { code: "P.111d", name: "Cấm xe ba bánh loại không có động cơ", meaning: "Cấm xe ba bánh loại không có động cơ (xe xích lô)." },
+            { code: "P.112", name: "Cấm người đi bộ", meaning: "Cấm người đi bộ đi qua." },
+            { code: "P.113", name: "Cấm xe người kéo, đẩy", meaning: "Cấm xe người kéo, đẩy đi qua (không cấm xe nôi trẻ em, xe cho người tàn tật)." },
+            { code: "P.114", name: "Cấm xe súc vật kéo", meaning: "Cấm xe súc vật kéo đi qua." },
+            { code: "P.115", name: "Hạn chế tải trọng toàn bộ xe", meaning: "Cấm các loại xe có khối lượng toàn bộ (trọng lượng xe và hàng) vượt quá trị số ghi trên biển." },
+            { code: "P.116", name: "Hạn chế tải trọng trên trục xe", meaning: "Cấm các xe có khối lượng phân bổ trên một trục bất kỳ vượt quá trị số trên biển." },
+            { code: "P.117", name: "Hạn chế chiều cao", meaning: "Cấm các xe (có tải hoặc không tải) có chiều cao vượt quá trị số ghi trên biển." },
+            { code: "P.118", name: "Hạn chế chiều rộng", meaning: "Cấm các xe (có tải hoặc không tải) có chiều rộng vượt quá trị số ghi trên biển." },
+            { code: "P.119", name: "Hạn chế chiều dài xe", meaning: "Cấm các loại xe (có tải hoặc không tải) có chiều dài vượt quá trị số ghi trên biển." },
+            { code: "P.120", name: "Hạn chế chiều dài tổ hợp xe", meaning: "Cấm các loại xe kéo rơ-moóc có tổng chiều dài (cả xe, rơ-moóc và hàng) vượt quá trị số." },
+            { code: "P.121", name: "Cự ly tối thiểu giữa hai xe", meaning: "Cấm xe cơ giới chạy nối đuôi nhau với khoảng cách nhỏ hơn trị số ghi trên biển." },
+            { code: "P.123a", name: "Cấm rẽ trái", meaning: "Cấm các loại xe (cơ giới và thô sơ) rẽ trái tại vị trí đặt biển." },
+            { code: "P.123b", name: "Cấm rẽ phải", meaning: "Cấm các loại xe (cơ giới và thô sơ) rẽ phải tại vị trí đặt biển." },
+            { code: "P.124a", name: "Cấm quay đầu xe", meaning: "Cấm các loại xe quay đầu theo kiểu chữ U, nhưng được phép rẽ trái." },
+            { code: "P.124b", name: "Cấm ô tô quay đầu xe", meaning: "Cấm riêng xe ô tô và xe máy 3 bánh quay đầu xe." },
+            { code: "P.124c", name: "Cấm rẽ trái và quay đầu xe", meaning: "Cấm các loại xe rẽ trái đồng thời cấm quay đầu." },
+            { code: "P.124d", name: "Cấm rẽ phải và quay đầu xe", meaning: "Cấm các loại xe rẽ phải đồng thời cấm quay đầu." },
+            { code: "P.124e", name: "Cấm ô tô rẽ trái và quay đầu xe", meaning: "Cấm riêng xe ô tô rẽ trái và quay đầu xe." },
+            { code: "P.124f", name: "Cấm ô tô rẽ phải và quay đầu xe", meaning: "Cấm riêng xe ô tô rẽ phải và quay đầu xe." },
+            { code: "P.125", name: "Cấm vượt", meaning: "Cấm các loại xe cơ giới vượt nhau." },
+            { code: "P.126", name: "Cấm xe ô tô tải vượt", meaning: "Cấm xe ô tô tải có khối lượng chuyên chở lớn hơn 3.500 kg vượt xe cơ giới khác." },
+            { code: "P.127", name: "Tốc độ tối đa cho phép", meaning: "Cấm các loại xe cơ giới chạy với tốc độ tối đa vượt quá trị số ghi trên biển." },
+            { code: "P.127a", name: "Tốc độ tối đa cho phép về ban đêm", meaning: "Quy định tốc độ tối đa về ban đêm cho các phương tiện." },
+            { code: "P.127b", name: "Biển ghép tốc độ tối đa cho phép trên từng làn", meaning: "Quy định tốc độ tối đa cho phép trên từng làn đường." },
+            { code: "P.127c", name: "Biển ghép tốc độ tối đa theo phương tiện trên làn", meaning: "Quy định tốc độ tối đa cho phép theo loại phương tiện trên từng làn đường." },
+            { code: "P.128", name: "Cấm sử dụng còi", meaning: "Cấm các loại xe cơ giới sử dụng còi." },
+            { code: "P.129", name: "Kiểm tra", meaning: "Nơi đặt trạm kiểm tra, các loại phương tiện phải dừng lại để kiểm tra." },
+            { code: "P.130", name: "Cấm dừng xe và đỗ xe", meaning: "Cấm các loại xe cơ giới dừng và đỗ ở phía đường có đặt biển." },
+            { code: "P.131a", name: "Cấm đỗ xe", meaning: "Cấm các loại xe cơ giới đỗ ở phía đường có đặt biển." },
+            { code: "P.131b", name: "Cấm đỗ xe ngày lẻ", meaning: "Cấm các loại xe cơ giới đỗ ở phía đường có đặt biển vào những ngày lẻ." },
+            { code: "P.131c", name: "Cấm đỗ xe ngày chẵn", meaning: "Cấm các loại xe cơ giới đỗ ở phía đường có đặt biển vào những ngày chẵn." },
+            { code: "P.132", name: "Nhường đường cho xe đi ngược chiều", meaning: "Phải nhường đường cho các loại xe cơ giới đi theo chiều ngược lại khi qua đường hẹp." },
+            { code: "P.133", name: "Hết cấm vượt", meaning: "Báo hết đoạn đường cấm vượt." },
+            { code: "P.134", name: "Hết tốc độ tối đa cho phép", meaning: "Báo hết đoạn đường hạn chế tốc độ tối đa." },
+            { code: "P.135", name: "Hết tất cả các lệnh cấm", meaning: "Báo hết đoạn đường mà nhiều biển báo cấm cùng hết hiệu lực." },
+            { code: "P.136", name: "Cấm đi thẳng", meaning: "Cấm tất cả các loại xe đi thẳng." },
+            { code: "P.137", name: "Cấm rẽ trái và rẽ phải", meaning: "Cấm tất cả các loại xe rẽ trái và rẽ phải." },
+            { code: "P.138", name: "Cấm đi thẳng và rẽ trái", meaning: "Cấm tất cả các loại xe đi thẳng và rẽ trái." },
+            { code: "P.139", name: "Cấm đi thẳng và rẽ phải", meaning: "Cấm tất cả các loại xe đi thẳng và rẽ phải." },
+            { code: "P.140", name: "Cấm xe công nông", meaning: "Cấm xe công nông, máy kéo, xe máy loại tương tự đi qua." }
+          ]
+        },
+        {
+          id: "bien-nguy-hiem", name: "Biển báo nguy hiểm", code: "W", color: "#E65100", lightColor: "#FFF3E0", description: "Cảnh báo các tình huống nguy hiểm trên đường.",
+          signs: [
+            { code: "W.201a", name: "Chỗ ngoặt nguy hiểm vòng bên trái", meaning: "Báo trước sắp đến một chỗ ngoặt nguy hiểm vòng sang trái." },
+            { code: "W.201b", name: "Chỗ ngoặt nguy hiểm vòng bên phải", meaning: "Báo trước sắp đến một chỗ ngoặt nguy hiểm vòng sang phải." },
+            { code: "W.201c", name: "Chỗ ngoặt nguy hiểm vòng bên trái có nguy cơ lật xe", meaning: "Báo trước sắp đến chỗ ngoặt nguy hiểm vòng bên trái và có khả năng gây lật xe." },
+            { code: "W.201d", name: "Chỗ ngoặt nguy hiểm vòng bên phải có nguy cơ lật xe", meaning: "Báo trước sắp đến chỗ ngoặt nguy hiểm vòng bên phải và có khả năng gây lật xe." },
+            { code: "W.202a", name: "Nhiều chỗ ngoặt nguy hiểm liên tiếp (ngoặt trái trước)", meaning: "Báo trước có nhiều chỗ ngoặt nguy hiểm liên tiếp, trong đó chỗ ngoặt đầu tiên hướng vòng bên trái." },
+            { code: "W.202b", name: "Nhiều chỗ ngoặt nguy hiểm liên tiếp (ngoặt phải trước)", meaning: "Báo trước có nhiều chỗ ngoặt nguy hiểm liên tiếp, trong đó chỗ ngoặt đầu tiên hướng vòng bên phải." },
+            { code: "W.203a", name: "Đường bị thu hẹp cả hai bên", meaning: "Báo trước sắp đến một đoạn đường bị thu hẹp đột ngột ở cả hai bên." },
+            { code: "W.203b", name: "Đường bị thu hẹp phía bên trái", meaning: "Báo trước sắp đến một đoạn đường bị thu hẹp đột ngột về phía trái." },
+            { code: "W.203c", name: "Đường bị thu hẹp phía bên phải", meaning: "Báo trước sắp đến một đoạn đường bị thu hẹp đột ngột về phía phải." },
+            { code: "W.204", name: "Đường hai chiều", meaning: "Báo trước sắp đến đoạn đường giao thông hai chiều đi lại chung trên một phía đường." },
+            { code: "W.205a", name: "Đường giao nhau đồng cấp (Ngã tư)", meaning: "Báo trước sắp đến nơi giao nhau cùng mức của các tuyến đường cùng cấp." },
+            { code: "W.205b", name: "Đường giao nhau đồng cấp (Ngã ba)", meaning: "Báo trước sắp đến nơi giao nhau cùng cấp, đường rẽ ngang sang phải." },
+            { code: "W.205c", name: "Đường giao nhau đồng cấp (Ngã ba)", meaning: "Báo trước sắp đến nơi giao nhau cùng cấp, đường rẽ ngang sang trái." },
+            { code: "W.205d", name: "Đường giao nhau đồng cấp (Ngã ba chéo)", meaning: "Báo trước sắp đến nơi giao nhau cùng cấp, đường rẽ chếch sang phải." },
+            { code: "W.205e", name: "Đường giao nhau đồng cấp (Ngã ba chéo)", meaning: "Báo trước sắp đến nơi giao nhau cùng cấp, đường rẽ chếch sang trái." },
+            { code: "W.206", name: "Giao nhau chạy theo vòng xuyến", meaning: "Báo trước nơi giao nhau có bố trí đảo an toàn vòng xuyến, xe phải chạy vòng quanh đảo." },
+            { code: "W.207a", name: "Giao nhau với đường không ưu tiên (Ngã tư)", meaning: "Báo trước sắp đến nơi giao nhau với đường không ưu tiên." },
+            { code: "W.207b", name: "Giao nhau với đường không ưu tiên (Ngã ba phải)", meaning: "Báo trước sắp giao nhau với đường không ưu tiên nằm bên phải." },
+            { code: "W.207c", name: "Giao nhau với đường không ưu tiên (Ngã ba trái)", meaning: "Báo trước sắp giao nhau với đường không ưu tiên nằm bên trái." },
+            { code: "W.207d", name: "Giao nhau với đường không ưu tiên (Chéo phải)", meaning: "Báo trước sắp giao nhau với đường không ưu tiên rẽ chếch bên phải." },
+            { code: "W.207e", name: "Giao nhau với đường không ưu tiên (Chéo trái)", meaning: "Báo trước sắp giao nhau với đường không ưu tiên rẽ chếch bên trái." },
+            { code: "W.207f", name: "Giao nhau với đường không ưu tiên (Chữ Y)", meaning: "Báo trước sắp giao nhau với hai đường nhánh không ưu tiên hợp thành ngã ba chữ Y." },
+            { code: "W.207g", name: "Giao nhau với đường không ưu tiên (Chữ Y trái)", meaning: "Báo trước sắp giao nhau với đường không ưu tiên rẽ nhánh sang trái." },
+            { code: "W.207h", name: "Giao nhau với đường không ưu tiên (Chữ Y phải)", meaning: "Báo trước sắp giao nhau với đường không ưu tiên rẽ nhánh sang phải." },
+            { code: "W.207i", name: "Giao nhau với đường không ưu tiên (Liên tiếp)", meaning: "Báo trước giao nhau với hai đường không ưu tiên so le nhau." },
+            { code: "W.207k", name: "Giao nhau với đường không ưu tiên (Liên tiếp)", meaning: "Báo trước giao nhau với hai đường không ưu tiên so le nhau." },
+            { code: "W.207l", name: "Giao nhau với đường không ưu tiên (Liên tiếp)", meaning: "Báo trước giao nhau với hai đường không ưu tiên so le nhau." },
+            { code: "W.208", name: "Giao nhau với đường ưu tiên", meaning: "Báo trước sắp đến nơi giao nhau với đường ưu tiên. Phải nhường đường cho xe đi trên đường ưu tiên." },
+            { code: "W.209", name: "Giao nhau có tín hiệu đèn", meaning: "Báo trước nơi giao nhau có điều khiển giao thông bằng tín hiệu đèn." },
+            { code: "W.210", name: "Giao nhau với đường sắt có rào chắn", meaning: "Báo trước sắp đến chỗ giao nhau với đường sắt có rào chắn kín hay rào chắn nửa kín." },
+            { code: "W.211a", name: "Giao nhau với đường sắt không có rào chắn", meaning: "Báo trước sắp đến chỗ giao nhau với đường sắt không có rào chắn, không có người điều khiển." },
+            { code: "W.211b", name: "Giao nhau với đường tàu điện", meaning: "Báo trước sắp đến chỗ giao nhau với đường tàu điện." },
+            { code: "W.212", name: "Cầu hẹp", meaning: "Báo trước sắp đến cầu hẹp (chiều rộng xe chạy nhỏ hơn hoặc bằng 4,50m)." },
+            { code: "W.213", name: "Cầu tạm", meaning: "Báo trước sắp đến cầu tạm, người lái xe cần chú ý theo chỉ dẫn." },
+            { code: "W.214", name: "Cầu quay - Cầu cất", meaning: "Báo trước sắp đến cầu quay, cầu cất." },
+            { code: "W.215a", name: "Kè, vực sâu phía trước", meaning: "Báo trước sắp đến những vị trí có kè, vực sâu ở phía trước mặt." },
+            { code: "W.215b", name: "Kè, vực sâu bên đường phía phải", meaning: "Báo trước sắp đến những vị trí có kè, vực sâu ở phía bên phải." },
+            { code: "W.215c", name: "Kè, vực sâu bên đường phía trái", meaning: "Báo trước sắp đến những vị trí có kè, vực sâu ở phía bên trái." },
+            { code: "W.216a", name: "Đường ngầm", meaning: "Báo trước những vị trí có đường ngầm (đường tràn)." },
+            { code: "W.216b", name: "Đường ngầm có nguy cơ lũ quét", meaning: "Báo trước khu vực đường ngầm thường xuyên có nguy cơ lũ quét." },
+            { code: "W.217", name: "Bến phà", meaning: "Báo trước sắp đến bến phà." },
+            { code: "W.218", name: "Cửa chui", meaning: "Báo trước sắp đến những đường có cổng chắn ngang như cổng đường hầm, cổng thành." },
+            { code: "W.219", name: "Dốc xuống nguy hiểm", meaning: "Báo trước đoạn dốc xuống nguy hiểm, người lái xe phải đi chậm." },
+            { code: "W.220", name: "Dốc lên nguy hiểm", meaning: "Báo trước đoạn dốc lên nguy hiểm." },
+            { code: "W.221a", name: "Đường lồi lõm", meaning: "Báo trước đoạn đường có mặt đường lồi lõm, gập ghềnh." },
+            { code: "W.221b", name: "Gờ giảm tốc", meaning: "Báo trước đoạn đường có gờ giảm tốc để phương tiện đi chậm lại." },
+            { code: "W.222a", name: "Đường trơn", meaning: "Báo trước đoạn đường có thể xảy ra trơn trượt nguy hiểm." },
+            { code: "W.222b", name: "Lề đường nguy hiểm", meaning: "Báo trước những nơi lề đường không ổn định, dễ lún, mẻ." },
+            { code: "W.223a", name: "Vách núi nguy hiểm phía bên trái", meaning: "Báo trước đường đi sát vách núi nguy hiểm phía bên trái." },
+            { code: "W.223b", name: "Vách núi nguy hiểm phía bên phải", meaning: "Báo trước đường đi sát vách núi nguy hiểm phía bên phải." },
+            { code: "W.224", name: "Đường người đi bộ cắt ngang", meaning: "Báo trước phần đường dành cho người đi bộ sang ngang." },
+            { code: "W.225", name: "Trẻ em", meaning: "Báo trước đoạn đường thường có trẻ em đi ngang qua (gần trường học, câu lạc bộ...)." },
+            { code: "W.226", name: "Đường người đi xe đạp cắt ngang", meaning: "Báo trước đoạn đường thường có người đi xe đạp cắt ngang qua." },
+            { code: "W.227", name: "Công trường", meaning: "Báo trước gần tới đoạn đường đang tiến hành thi công, sửa chữa." },
+            { code: "W.228a", name: "Đá lở (từ bên trái)", meaning: "Báo trước đoạn đường dễ có đá lở từ trên vách núi phía trái rơi xuống." },
+            { code: "W.228b", name: "Đá lở (từ bên phải)", meaning: "Báo trước đoạn đường dễ có đá lở từ trên vách núi phía phải rơi xuống." },
+            { code: "W.228c", name: "Sỏi đá bắn lên", meaning: "Báo trước đoạn đường có nhiều sỏi đá dăm dễ bị bắn lên từ lốp xe." },
+            { code: "W.228d", name: "Nền đường yếu", meaning: "Báo trước đoạn nền đường yếu, theo dõi lún." },
+            { code: "W.229", name: "Dải máy bay lên xuống", meaning: "Báo trước đoạn đường ở vùng sát đường băng sân bay." },
+            { code: "W.230", name: "Gia súc", meaning: "Báo trước đoạn đường thường có gia súc thả rông hoặc lùa qua ngang đường." },
+            { code: "W.231", name: "Thú rừng vượt qua đường", meaning: "Báo trước đoạn đường thường có thú rừng qua đường." },
+            { code: "W.232", name: "Gió ngang", meaning: "Báo trước đoạn đường thường có gió ngang thổi rất mạnh." },
+            { code: "W.233", name: "Nguy hiểm khác", meaning: "Báo trước có thể gặp những nguy hiểm bất ngờ khác chưa có biển báo đặc thù." },
+            { code: "W.234", name: "Giao nhau với đường hai chiều", meaning: "Báo trước sắp giao nhau với đường hai chiều." },
+            { code: "W.235", name: "Đường đôi", meaning: "Báo trước sắp đến đoạn đường đôi có dải phân cách cứng ở giữa." },
+            { code: "W.236", name: "Kết thúc đường đôi", meaning: "Báo trước sắp kết thúc đoạn đường đôi, đi vào đường hai chiều không có dải phân cách." },
+            { code: "W.237", name: "Cầu vồng", meaning: "Báo trước sắp đến chiếc cầu có độ vồng rất lớn làm khuất tầm nhìn." },
+            { code: "W.238", name: "Đường cao tốc phía trước", meaning: "Báo trước đoạn đường nối thẳng, dẫn vào đường cao tốc." },
+            { code: "W.239a", name: "Đường cáp điện ở phía trên", meaning: "Báo trước đoạn đường có đường dây điện cắt ngang phía trên tuyến đường." },
+            { code: "W.239b", name: "Chiều cao tĩnh không thực tế", meaning: "Báo trước tĩnh không của một công trình bị hạn chế, thường dùng kèm với W.239a." },
+            { code: "W.240", name: "Đường hầm", meaning: "Báo trước sắp đi vào đường hầm, lái xe cần chú ý bật đèn." },
+            { code: "W.241", name: "Ùn tắc giao thông", meaning: "Báo trước đoạn đường hay xảy ra ùn tắc giao thông." },
+            { code: "W.242a", name: "Nơi đường sắt giao vuông góc với đường bộ", meaning: "Báo hiệu đường sắt giao vuông góc, chỉ có 1 đường sắt cắt ngang." },
+            { code: "W.242b", name: "Nơi đường sắt giao vuông góc với đường bộ", meaning: "Báo hiệu đường sắt giao vuông góc, có từ 2 đường sắt cắt ngang trở lên." },
+            { code: "W.243a", name: "Nơi đường sắt giao không vuông góc với đường bộ", meaning: "Báo hiệu đường sắt giao cắt đường bộ theo đường chéo (đặt xa nhất)." },
+            { code: "W.243b", name: "Nơi đường sắt giao không vuông góc với đường bộ", meaning: "Báo hiệu đường sắt giao cắt đường bộ theo đường chéo (đặt khoảng cách giữa)." },
+            { code: "W.243c", name: "Nơi đường sắt giao không vuông góc với đường bộ", meaning: "Báo hiệu đường sắt giao cắt đường bộ theo đường chéo (đặt gần nhất)." },
+            { code: "W.244", name: "Đoạn đường hay xảy ra tai nạn", meaning: "Báo hiệu đoạn đường phía trước thường xuyên xảy ra tai nạn giao thông." },
+            { code: "W.245a", name: "Đi chậm (Biển tiếng Việt)", meaning: "Dùng để nhắc nhở lái xe giảm tốc độ đi chậm." },
+            { code: "W.245b", name: "Đi chậm (Biển tiếng Anh)", meaning: "Dùng để nhắc nhở lái xe giảm tốc độ đi chậm (SLOW)." },
+            { code: "W.246a", name: "Chú ý chướng ngại vật (Vòng tránh 2 bên)", meaning: "Báo phía trước có chướng ngại vật, xe có thể đi vòng tránh sang 2 bên." },
+            { code: "W.246b", name: "Chú ý chướng ngại vật (Vòng tránh sang trái)", meaning: "Báo phía trước có chướng ngại vật, xe đi vòng tránh sang trái." },
+            { code: "W.246c", name: "Chú ý chướng ngại vật (Vòng tránh sang phải)", meaning: "Báo phía trước có chướng ngại vật, xe đi vòng tránh sang phải." },
+            { code: "W.247", name: "Chú ý xe đỗ", meaning: "Báo phía trước có xe ô tô đỗ trên đường hoặc lề đường." }
+          ]
+        },
+        {
+          id: "bien-hieu-lenh", name: "Biển hiệu lệnh", code: "R", color: "#0D47A1", lightColor: "#E3F2FD", description: "Ra lệnh cho người tham gia giao thông phải thi hành.",
+          signs: [
+            { code: "R.122", name: "Dừng lại", meaning: "Buộc các xe cơ giới và thô sơ kể cả xe được ưu tiên phải dừng lại trước biển hoặc trước vạch kẻ đường." },
+            { code: "R.301a", name: "Hướng đi phải theo (Thẳng)", meaning: "Các xe chỉ được đi thẳng (trừ xe ưu tiên theo quy định)." },
+            { code: "R.301b", name: "Hướng đi phải theo (Rẽ phải)", meaning: "Các xe chỉ được rẽ phải (trừ xe ưu tiên theo quy định)." },
+            { code: "R.301c", name: "Hướng đi phải theo (Rẽ trái)", meaning: "Các xe chỉ được rẽ trái (trừ xe ưu tiên theo quy định)." },
+            { code: "R.301d", name: "Hướng đi phải theo (Rẽ phải)", meaning: "Các xe chỉ được rẽ phải tại nơi đường giao nhau." },
+            { code: "R.301e", name: "Hướng đi phải theo (Rẽ trái)", meaning: "Các xe chỉ được rẽ trái tại nơi đường giao nhau." },
+            { code: "R.301f", name: "Hướng đi phải theo (Thẳng và Rẽ phải)", meaning: "Các xe chỉ được đi thẳng hay rẽ phải." },
+            { code: "R.301g", name: "Hướng đi phải theo (Thẳng và Rẽ trái)", meaning: "Các xe chỉ được đi thẳng hay rẽ trái." },
+            { code: "R.301h", name: "Hướng đi phải theo (Rẽ trái và Rẽ phải)", meaning: "Các xe chỉ được rẽ trái hay rẽ phải." },
+            { code: "R.302a", name: "Hướng phải đi vòng chướng ngại vật (Phải)", meaning: "Báo các loại xe phải đi vòng sang phải để qua một chướng ngại vật." },
+            { code: "R.302b", name: "Hướng phải đi vòng chướng ngại vật (Trái)", meaning: "Báo các loại xe phải đi vòng sang trái để qua một chướng ngại vật." },
+            { code: "R.302c", name: "Hướng phải đi vòng chướng ngại vật (Hai bên)", meaning: "Báo các loại xe có thể đi vòng sang trái hoặc sang phải để qua chướng ngại vật." },
+            { code: "R.303", name: "Nơi giao nhau chạy theo vòng xuyến", meaning: "Báo cho các loại xe phải chạy vòng theo đảo an toàn ở nơi đường giao nhau." },
+            { code: "R.304", name: "Đường dành cho xe thô sơ", meaning: "Báo đường dành riêng cho xe thô sơ (kể cả xe của người tàn tật) và người đi bộ." },
+            { code: "R.305", name: "Đường dành cho người đi bộ", meaning: "Báo đường dành riêng cho người đi bộ. Các loại xe không được phép đi vào." },
+            { code: "R.306", name: "Tốc độ tối thiểu cho phép", meaning: "Báo tốc độ tối thiểu cho phép các xe cơ giới chạy. Cấm xe chạy chậm hơn trị số ghi trên biển." },
+            { code: "R.307", name: "Hết hạn chế tốc độ tối thiểu", meaning: "Báo hết đoạn đường hạn chế tốc độ tối thiểu." },
+            { code: "R.308a", name: "Tuyến đường cầu vượt cắt ngang (Thẳng)", meaning: "Biểu thị phía trước có cầu vượt, các xe phải đi thẳng." },
+            { code: "R.308b", name: "Tuyến đường cầu vượt cắt ngang (Rẽ)", meaning: "Biểu thị phía trước có cầu vượt, các xe có thể rẽ trái hoặc rẽ phải." },
+            { code: "R.309", name: "Ấn còi", meaning: "Biểu thị xe cộ đi đến vị trí đặt biển phải ấn còi (thường đặt ở khúc cua khuất)." },
+            { code: "R.310a", name: "Hướng đi phải theo cho các xe chở hàng nguy hiểm (Thẳng)", meaning: "Báo hướng đi bắt buộc cho xe chở hàng nguy hiểm đi thẳng." },
+            { code: "R.310b", name: "Hướng đi phải theo cho các xe chở hàng nguy hiểm (Trái)", meaning: "Báo hướng đi bắt buộc cho xe chở hàng nguy hiểm rẽ trái." },
+            { code: "R.310c", name: "Hướng đi phải theo cho các xe chở hàng nguy hiểm (Phải)", meaning: "Báo hướng đi bắt buộc cho xe chở hàng nguy hiểm rẽ phải." },
+            { code: "R.403a", name: "Đường dành cho xe ô tô", meaning: "Báo bắt đầu đường dành cho các loại xe ô tô đi lại." },
+            { code: "R.403b", name: "Đường dành cho xe ô tô, xe máy", meaning: "Báo bắt đầu đường dành cho xe ô tô và xe máy đi lại chung." },
+            { code: "R.403c", name: "Đường dành cho xe buýt", meaning: "Báo bắt đầu đường dành riêng cho xe buýt." },
+            { code: "R.403d", name: "Đường dành cho xe máy", meaning: "Báo bắt đầu đường dành riêng cho xe máy." },
+            { code: "R.403e", name: "Đường dành cho xe đạp", meaning: "Báo bắt đầu đường dành riêng cho xe đạp." },
+            { code: "R.403f", name: "Đường dành cho xe ô tô, xe buýt", meaning: "Báo bắt đầu đường dành riêng cho xe ô tô và xe buýt." },
+            { code: "R.404a", name: "Hết đoạn đường dành cho xe ô tô", meaning: "Báo kết thúc đoạn đường dành cho xe ô tô." },
+            { code: "R.404b", name: "Hết đoạn đường dành cho xe ô tô, xe máy", meaning: "Báo kết thúc đoạn đường dành cho xe ô tô và xe máy." },
+            { code: "R.411", name: "Hướng đi trên mỗi làn đường theo vạch kẻ đường", meaning: "Chỉ dẫn cho người lái xe biết số lượng làn đường và hướng đi trên mỗi làn đường." },
+            { code: "R.412a", name: "Làn đường dành cho ô tô khách", meaning: "Báo hiệu làn đường dành riêng cho ô tô khách (kể cả xe buýt)." },
+            { code: "R.412b", name: "Làn đường dành cho ô tô con", meaning: "Báo hiệu làn đường dành riêng cho ô tô con." },
+            { code: "R.412c", name: "Làn đường dành cho ô tô tải", meaning: "Báo hiệu làn đường dành riêng cho ô tô tải." },
+            { code: "R.412d", name: "Làn đường dành cho xe máy", meaning: "Báo hiệu làn đường dành riêng cho xe máy và xe gắn máy." },
+            { code: "R.412f", name: "Làn đường dành cho ô tô", meaning: "Báo hiệu làn đường dành riêng cho các loại ô tô." },
+            { code: "R.415", name: "Biển gộp làn đường theo phương tiện", meaning: "Báo hiệu làn đường dành riêng cho từng loại phương tiện hoặc nhóm phương tiện." },
+            { code: "R.E9a", name: "Cấm đỗ xe trong khu vực", meaning: "Báo hiệu bắt đầu vào khu vực cấm đỗ xe." },
+            { code: "R.E9b", name: "Hết khu vực cấm đỗ xe", meaning: "Báo hiệu hết khu vực cấm đỗ xe." },
+            { code: "R.E9c", name: "Khu vực đỗ xe", meaning: "Báo hiệu khu vực được phép đỗ xe." },
+            { code: "R.E9d", name: "Hết khu vực đỗ xe", meaning: "Báo hiệu hết khu vực đỗ xe." },
+            { code: "R.E10", name: "Hạn chế tốc độ tối đa trong khu vực", meaning: "Báo hiệu bắt đầu vào khu vực hạn chế tốc độ tối đa." },
+            { code: "R.E11a", name: "Hết hạn chế tốc độ tối đa trong khu vực", meaning: "Báo hiệu hết khu vực hạn chế tốc độ tối đa." }
+          ]
+        },
+        {
+          id: "bien-chi-dan", name: "Biển chỉ dẫn", code: "I", color: "#1B5E20", lightColor: "#E8F5E9", description: "Cung cấp thông tin hướng dẫn giao thông an toàn và thuận lợi.",
+          signs: [
+            { code: "I.401", name: "Bắt đầu đường ưu tiên", meaning: "Biểu thị ưu tiên cho các phương tiện trên đường này được đi trước tại nơi giao nhau." },
+            { code: "I.402", name: "Hết đoạn đường ưu tiên", meaning: "Báo hiệu kết thúc đoạn đường được ưu tiên." },
+            { code: "I.405a", name: "Đường cụt (Thẳng)", meaning: "Chỉ dẫn đường phía trước là đường cụt (không có lối ra)." },
+            { code: "I.405b", name: "Đường cụt (Rẽ phải)", meaning: "Chỉ dẫn lối rẽ bên phải là đường cụt." },
+            { code: "I.405c", name: "Đường cụt (Rẽ trái)", meaning: "Chỉ dẫn lối rẽ bên trái là đường cụt." },
+            { code: "I.406", name: "Được ưu tiên qua đường hẹp", meaning: "Chỉ dẫn người lái xe cơ giới được ưu tiên đi trước khi qua đoạn đường hẹp đối với xe ngược chiều." },
+            { code: "I.407a", name: "Đường một chiều (Thẳng)", meaning: "Chỉ dẫn những đoạn đường chạy một chiều theo hướng mũi tên." },
+            { code: "I.407b", name: "Đường một chiều (Phải)", meaning: "Chỉ dẫn lối rẽ sang phải là đường một chiều." },
+            { code: "I.407c", name: "Đường một chiều (Trái)", meaning: "Chỉ dẫn lối rẽ sang trái là đường một chiều." },
+            { code: "I.408", name: "Nơi đỗ xe", meaning: "Chỉ dẫn những nơi được phép đỗ xe (ô tô, xe máy...)." },
+            { code: "I.408a", name: "Nơi đỗ xe một phần trên vỉa hè", meaning: "Chỉ dẫn nơi đỗ xe được phép đỗ một phần thân xe trên vè hè." },
+            { code: "I.409", name: "Chỗ quay xe", meaning: "Chỉ dẫn vị trí được phép quay đầu xe kiểu chữ U." },
+            { code: "I.410", name: "Khu vực quay xe", meaning: "Chỉ dẫn khu vực rộng rãi được phép quay đầu xe." },
+            { code: "I.413a", name: "Đường phía trước có làn đường dành cho ô tô khách", meaning: "Chỉ dẫn đường có làn dành riêng cho xe khách chạy ngược chiều." },
+            { code: "I.414a", name: "Chỉ hướng đường (Địa danh)", meaning: "Chỉ hướng đi đến các địa danh, thành phố lớn." },
+            { code: "I.415", name: "Mũi tên chỉ hướng đi", meaning: "Chỉ hướng đi bắt buộc phải theo tại nơi đường giao nhau." },
+            { code: "I.416", name: "Đường tránh", meaning: "Chỉ dẫn lối đi tránh khi đường phía trước bị cấm hoặc đang sửa chữa." },
+            { code: "I.417a", name: "Chỉ hướng đường phải đi cho từng loại xe", meaning: "Quy định hướng đi cho từng loại xe cụ thể tại ngã tư." },
+            { code: "I.419", name: "Chỉ dẫn địa giới", meaning: "Chỉ dẫn ranh giới giữa các tỉnh, thành phố, huyện." },
+            { code: "I.422", name: "Di tích lịch sử", meaning: "Chỉ dẫn hướng đi đến những nơi có di tích lịch sử hoặc danh lam thắng cảnh." },
+            { code: "I.423a", name: "Đường người đi bộ sang ngang", meaning: "Chỉ dẫn vị trí có vạch kẻ đường dành cho người đi bộ sang đường." },
+            { code: "I.423b", name: "Điểm bắt đầu đường đi bộ", meaning: "Báo hiệu khu vực dành riêng cho người đi bộ." },
+            { code: "I.424a", name: "Cầu vượt qua đường cho người đi bộ", meaning: "Chỉ dẫn vị trí có cầu vượt dành cho người đi bộ." },
+            { code: "I.424c", name: "Hầm chui qua đường cho người đi bộ", meaning: "Chỉ dẫn vị trí có hầm chui dành cho người đi bộ." },
+            { code: "I.425", name: "Bệnh viện", meaning: "Chỉ dẫn sắp đến cơ sở y tế, bệnh viện." },
+            { code: "I.426", name: "Trạm cấp cứu", meaning: "Chỉ dẫn vị trí có trạm sơ cứu, cấp cứu y tế." },
+            { code: "I.427a", name: "Trạm sửa chữa xe", meaning: "Chỉ dẫn vị trí có xưởng sửa chữa xe cơ giới." },
+            { code: "I.427b", name: "Trạm kiểm tra tải trọng xe", meaning: "Chỉ dẫn vị trí có trạm cân kiểm tra tải trọng xe." },
+            { code: "I.428", name: "Cửa hàng xăng dầu", meaning: "Chỉ dẫn vị trí có trạm cung cấp nhiên liệu." },
+            { code: "I.429", name: "Nơi rửa xe", meaning: "Chỉ dẫn vị trí có dịch vụ rửa xe." },
+            { code: "I.430", name: "Điện thoại", meaning: "Chỉ dẫn vị trí có điểm điện thoại công cộng." },
+            { code: "I.431", name: "Trạm dừng nghỉ", meaning: "Chỉ dẫn vị trí có trạm dừng chân cho khách đường dài." },
+            { code: "I.432", name: "Khách sạn", meaning: "Chỉ dẫn vị trí có nhà nghỉ, khách sạn." },
+            { code: "I.433a", name: "Nơi ăn uống", meaning: "Chỉ dẫn vị trí có nhà hàng, quán ăn." },
+            { code: "I.434", name: "Bến xe buýt", meaning: "Chỉ dẫn vị trí điểm dừng đón trả khách của xe buýt." },
+            { code: "I.435", name: "Bến xe điện", meaning: "Chỉ dẫn vị trí điểm dừng của xe điện bánh sắt." },
+            { code: "I.436", name: "Trạm cảnh sát giao thông", meaning: "Chỉ dẫn vị trí trạm làm việc của CSGT." },
+            { code: "I.439", name: "Tên cầu", meaning: "Chỉ dẫn tên của chiếc cầu đi qua." },
+            { code: "I.440", name: "Đoạn đường đang thi công", meaning: "Chỉ dẫn đoạn đường có công trình đang thực hiện." },
+            { code: "I.441a", name: "Báo hiệu phía trước có công trường", meaning: "Cảnh báo phía trước có khu vực đang thi công." },
+            { code: "I.442", name: "Chợ", meaning: "Chỉ dẫn vị trí có chợ gần đường." },
+            { code: "I.443", name: "Xe kéo rơ-moóc", meaning: "Chỉ dẫn lối đi cho xe kéo rơ-moóc." },
+            { code: "I.444a", name: "Biển chỉ dẫn địa danh (Tiếng Việt)", meaning: "Chỉ dẫn hướng đến các địa danh du lịch, thắng cảnh." },
+            { code: "I.445", name: "Biển báo mô tả tình trạng đường", meaning: "Cung cấp thông tin về điều kiện mặt đường phía trước." },
+            { code: "I.447", name: "Cầu vượt liên thông", meaning: "Chỉ dẫn sắp đến nút giao cầu vượt có các nhánh rẽ liên thông." }
+          ]
+        },
+        {
+          id: "bien-phu", name: "Biển phụ", code: "S", color: "#4A148C", lightColor: "#F3E5F5", description: "Bổ sung, thuyết minh chi tiết cho các biển báo chính.",
+          signs: [
+            { code: "S.501", name: "Phạm vi tác dụng của biển", meaning: "Báo chiều dài đoạn đường mà biển chính có hiệu lực (áp dụng cho các biển nguy hiểm hoặc cấm)." },
+            { code: "S.502", name: "Khoảng cách đến đối tượng báo hiệu", meaning: "Báo khoảng cách thực tế từ vị trí đặt biển đến đối tượng được báo hiệu ở phía trước." },
+            { code: "S.503a", name: "Hướng tác dụng của biển (Vuông góc phải)", meaning: "Chỉ hướng tác dụng của biển chính là hướng vuông góc rẽ sang phải." },
+            { code: "S.503b", name: "Hướng tác dụng của biển (Vuông góc trái)", meaning: "Chỉ hướng tác dụng của biển chính là hướng vuông góc rẽ sang trái." },
+            { code: "S.503c", name: "Hướng tác dụng của biển (Vuông góc 2 bên)", meaning: "Chỉ hướng tác dụng của biển chính là hướng vuông góc rẽ sang cả hai bên." },
+            { code: "S.503d", name: "Hướng tác dụng của biển (Song song trước)", meaning: "Chỉ hướng tác dụng của biển chính là hướng song song phía trước biển." },
+            { code: "S.503e", name: "Hướng tác dụng của biển (Song song sau)", meaning: "Chỉ hướng tác dụng của biển chính là hướng song song phía sau biển." },
+            { code: "S.503f", name: "Hướng tác dụng của biển (Song song 2 chiều)", meaning: "Chỉ hướng tác dụng của biển chính là hướng song song cả phía trước và phía sau biển." },
+            { code: "S.504", name: "Làn đường", meaning: "Quy định biển chính chỉ có hiệu lực đối với riêng một làn đường cụ thể (mũi tên chỉ xuống làn đó)." },
+            { code: "S.505a", name: "Loại xe", meaning: "Chỉ rõ biển chính chỉ áp dụng cho một loại xe nhất định (hình vẽ loại xe nào thì áp dụng cho xe đó)." },
+            { code: "S.505b", name: "Loại xe hạn chế qua cầu", meaning: "Cho biết các loại xe (kèm theo tải trọng) bị hạn chế khi đi qua cầu." },
+            { code: "S.505c", name: "Tải trọng trục hạn chế qua cầu", meaning: "Chỉ rõ tải trọng phân bổ trên trục xe bị hạn chế khi đi qua cầu." },
+            { code: "S.506a", name: "Hướng đường ưu tiên", meaning: "Biểu thị hướng của đường ưu tiên tại nơi giao nhau (nét liền đậm là đường ưu tiên)." },
+            { code: "S.506b", name: "Hướng đường ưu tiên", meaning: "Biểu thị hướng của đường ưu tiên tại nơi giao nhau (nét liền đậm là đường ưu tiên)." },
+            { code: "S.507", name: "Hướng rẽ", meaning: "Sử dụng độc lập để báo trước hướng rẽ của đường cong nguy hiểm phía trước." },
+            { code: "S.508a", name: "Biểu thị thời gian (Theo giờ)", meaning: "Quy định khoảng thời gian (giờ trong ngày) mà biển chính có hiệu lực." },
+            { code: "S.508b", name: "Biểu thị thời gian (Theo ngày/ca)", meaning: "Quy định khoảng thời gian cụ thể (theo ngày hoặc ca) mà biển chính có hiệu lực." },
+            { code: "S.509a", name: "Thuyết minh biển chính", meaning: "Dùng để ghi chữ giải thích, thuyết minh bổ sung cho biển báo chính." },
+            { code: "S.509b", name: "Chú ý xe đỗ", meaning: "Báo cho người lái xe chú ý khu vực thường có xe ô tô đỗ, để kết hợp với biển nguy hiểm." },
+            { code: "S.510a", name: "Chú ý đường trơn có băng tuyết", meaning: "Cảnh báo đoạn đường phía trước có hiện tượng băng tuyết trơn trượt." }
+          ]
+        }
+      ]
+    };
+
+    const State = { currentView: 'home', currentCatId: null, searchQuery: '', listFilter: '', listSortByCode: true, visibleCount: 30, CHUNK: 30 };
+    const $ = id => document.getElementById(id);
+
+    // LOGIC HÌNH ẢNH: Tự động tải từ thư mục assets/images/...
+    function getImageUrl(code) { return `./assets/images/${code}.png`; }
+
+    function init() {
+      renderHome();
+      bindEvents();
+      showView('home');
+    }
+
+    function showView(view) {
+      State.currentView = view;
+      ['view-home', 'view-list', 'view-search'].forEach(id => { $(id).classList.toggle('active', id === `view-${view}`); });
+      let bc = $('header-breadcrumb'), cat = State.currentCatId ? embeddedData.categories.find(c => c.id === State.currentCatId) : null;
+      if (view === 'home') bc.innerHTML = `<span>Trang chủ</span>`;
+      else if (view === 'search') bc.innerHTML = `<span class="bc-home" onclick="goHome()">Trang chủ</span> <span class="bc-current">› Tìm kiếm</span>`;
+      else if (cat) bc.innerHTML = `<span class="bc-home" onclick="goHome()">Trang chủ</span> <span class="bc-current">› ${cat.name}</span>`;
+    }
+
+    function renderHome() {
+      let grid = $('category-grid'), total = embeddedData.categories.reduce((s, c) => s + c.signs.length, 0);
+      $('stat-total').innerHTML = `${total}<span>+</span>`;
+      grid.innerHTML = embeddedData.categories.map(cat => `
+        <div class="category-card" style="--cat-color:${cat.color};--cat-light:${cat.lightColor}" onclick="openCategory('${cat.id}')">
+          <div class="card-top">
+            <div class="card-icon-ring">${cat.code}</div>
+            <div><div class="card-name">${cat.name}</div><div class="card-desc">${cat.description.split('.')[0]}</div></div>
+          </div>
+          <div class="card-bottom">${cat.signs.length} biển báo</div>
+        </div>`).join('');
+    }
+
+    function openCategory(id) {
+      State.currentCatId = id; State.listFilter = ''; State.visibleCount = State.CHUNK; $('list-search-input').value = '';
+      let cat = embeddedData.categories.find(c => c.id === id);
+      $('cat-header-card').innerHTML = `
+        <div class="cat-header-icon" style="background:${cat.lightColor};color:${cat.color}">${cat.code}</div>
+        <div><div class="cat-header-code" style="color:${cat.color}">Nhóm ${cat.code}</div>
+        <div class="cat-header-name" style="color:${cat.color}">${cat.name}</div></div>`;
+      document.querySelectorAll('.sort-btn').forEach(b => b.style.setProperty('--cat-color', cat.color));
+      renderSigns(cat); showView('list'); window.scrollTo(0,0);
+    }
+
+    function renderSigns(cat) {
+      let grid = $('signs-grid'), signs = [...cat.signs];
+      if (State.listFilter) {
+        let q = State.listFilter.toLowerCase();
+        signs = signs.filter(s => s.name.toLowerCase().includes(q) || s.code.toLowerCase().includes(q));
+      }
+      signs.sort((a,b) => State.listSortByCode ? a.code.localeCompare(b.code, undefined, {numeric:true}) : a.name.localeCompare(b.name, 'vi'));
+      
+      $('signs-count').textContent = `${signs.length} biển`;
+      let visible = signs.slice(0, State.visibleCount);
+      
+      // Khối xử lý HTML chứa fallback tự động hiện mã ký hiệu khi chưa có ảnh
+      grid.innerHTML = visible.map(s => `
+        <div class="sign-card" style="--cat-color:${cat.color};--cat-light:${cat.lightColor}" onclick="openSignModal('${s.code}','${cat.id}')">
+          <div class="sign-img-wrap">
+            <img src="${getImageUrl(s.code)}" alt="${s.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="img-fallback">${cat.code}</div>
+          </div>
+          <div class="sign-body">
+            <div class="sign-code-badge">${s.code}</div>
+            <div class="sign-name">${s.name}</div>
+            <div class="sign-snippet">${s.meaning}</div>
+          </div>
+        </div>`).join('');
+        
+      $('view-more-wrap').style.display = signs.length > State.visibleCount ? 'block' : 'none';
+    }
+
+    function openSignModal(code, catId) {
+      let cat = embeddedData.categories.find(c => c.id === catId), sign = cat.signs.find(s => s.code === code);
+      $('modal-top').style.background = cat.lightColor;
+      $('modal-top').innerHTML = `
+        <div class="modal-close-x" onclick="closeModal()">✕</div>
+        <img class="modal-sign-img" src="${getImageUrl(sign.code)}" onerror="this.style.display='none'">
+        <div class="modal-code-pill" style="color:${cat.color}">${sign.code}</div>`;
+      $('modal-body').innerHTML = `
+        <div class="modal-sign-name">${sign.name}</div>
+        <div style="font-weight:600;color:gray;margin-bottom:12px;font-size:13px">${cat.name}</div>
+        <div class="modal-meaning-box" style="--cat-color:${cat.color}">${sign.meaning}</div>`;
+      $('modal-overlay').classList.add('open');
+    }
+
+    function closeModal() { $('modal-overlay').classList.remove('open'); }
+
+    function performSearch(q) {
+      State.searchQuery = q.trim().toLowerCase();
+      if (!State.searchQuery) return goHome();
+      let results = embeddedData.categories.map(cat => ({
+        cat, signs: cat.signs.filter(s => s.name.toLowerCase().includes(State.searchQuery) || s.code.toLowerCase().includes(State.searchQuery))
+      })).filter(r => r.signs.length > 0);
+      
+      $('search-result-count').textContent = `${results.reduce((s,r)=>s+r.signs.length,0)} kết quả`;
+      $('search-empty').style.display = results.length ? 'none' : 'block';
+      $('search-grid').innerHTML = results.map(r => `
+        <div class="search-result-group">
+          <div class="search-group-label" style="color:${r.cat.color}">${r.cat.name} (${r.signs.length})</div>
+          <div class="signs-grid">${r.signs.map(s => `
+            <div class="sign-card" style="--cat-color:${r.cat.color};--cat-light:${r.cat.lightColor}" onclick="openSignModal('${s.code}','${r.cat.id}')">
+              <div class="sign-img-wrap">
+                <img src="${getImageUrl(s.code)}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="img-fallback">${r.cat.code}</div>
+              </div>
+              <div class="sign-body">
+                <div class="sign-code-badge">${s.code}</div>
+                <div class="sign-name">${s.name}</div>
+                <div class="sign-snippet">${s.meaning}</div>
+              </div>
+            </div>`).join('')}
+          </div>
+        </div>`).join('');
+      showView('search'); window.scrollTo(0,0);
+    }
+
+    function goHome() { State.currentCatId = null; $('header-search-input').value=''; showView('home'); window.scrollTo(0,0); }
+
+    function bindEvents() {
+      let debounce = (f,ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(()=>f(...a),ms) }};
+      $('header-search-input').addEventListener('input', debounce(e => performSearch(e.target.value), 300));
+      $('list-search-input').addEventListener('input', debounce(e => { State.listFilter = e.target.value; renderSigns(embeddedData.categories.find(c=>c.id===State.currentCatId)); }, 200));
+      $('sort-code').onclick = function() { State.listSortByCode=true; this.classList.add('active'); $('sort-name').classList.remove('active'); renderSigns(embeddedData.categories.find(c=>c.id===State.currentCatId)); };
+      $('sort-name').onclick = function() { State.listSortByCode=false; this.classList.add('active'); $('sort-code').classList.remove('active'); renderSigns(embeddedData.categories.find(c=>c.id===State.currentCatId)); };
+      $('back-btn').onclick = goHome;
+      $('view-more-btn').onclick = () => { State.visibleCount += State.CHUNK; renderSigns(embeddedData.categories.find(c=>c.id===State.currentCatId)); };
+    }
+
+    // Khởi chạy khi tài liệu tải xong
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
